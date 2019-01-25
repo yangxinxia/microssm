@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.boluo.dict.dao.SysLogDao">
+  <resultMap id="BaseResultMap" type="org.boluo.dict.model.SysLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sys_name" jdbcType="VARCHAR" property="sysName" />
+    <result column="module" jdbcType="VARCHAR" property="module" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+    <result column="request_ip" jdbcType="VARCHAR" property="requestIp" />
+    <result column="request_param" jdbcType="VARCHAR" property="requestParam" />
+    <result column="commit" jdbcType="VARCHAR" property="commit" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sys_name,module,class_name, method, user_id, user_account,request_param,request_ip, commit,create_time
+  </sql>
+  <select id="get" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from sys_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <select id="findPagination"  resultMap="BaseResultMap">
+  	 select 
+    <include refid="Base_Column_List" />
+    from sys_log t
+    where 1=1 
+    <if test="params.sysName != null and params.sysName != ''">
+		AND t.sys_name = #{params.sysName}
+	</if>
+	<if test="params.userAccount != null and params.userAccount != ''">
+		AND (t.user_account LIKE CONCAT(UPPER(#{params.userAccount}),'%')
+			OR t.user_account LIKE CONCAT(LOWER(#{params.userAccount}),'%')
+		)
+	</if>
+	<if test="params.startDate != null and params.startDate != ''">
+		AND t.create_time <![CDATA[>=#{params.startDate}]]>
+	</if>
+	
+	<if test="params.endDate != null and params.endDate != ''">
+		AND t.create_time <![CDATA[<=DATE_ADD(date_format(#{params.endDate},'%Y-%m-%d'), INTERVAL 1 day)]]>
+	</if>
+	
+  </select>
+
+  <insert id="insert" parameterType="org.boluo.dict.model.SysLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysName != null">
+        sys_name,
+      </if>
+      <if test="module != null">
+        module,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+       <if test="userAccount != null">
+        user_account,
+      </if>
+      <if test="requestIp != null">
+        request_ip,
+      </if>
+      <if test="requestParam != null">
+        request_param,
+      </if>
+      <if test="commit != null">
+        commit,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysName != null">
+        #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null">
+        #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userAccount != null">
+        #{userAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="requestIp != null">
+        #{requestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParam != null">
+        #{requestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="commit != null">
+        #{commit,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+ 
+</mapper>

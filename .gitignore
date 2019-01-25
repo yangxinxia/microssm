@@ -1,0 +1,11 @@
+##ignore this file##
+*target*
+/target/ 
+/bin/
+.class
+.classpath
+.project
+.settings
+.log
+.jar
+catalina.home_IS_UNDEFINED
