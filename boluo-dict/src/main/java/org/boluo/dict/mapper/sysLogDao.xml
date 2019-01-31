@@ -13,9 +13,10 @@
     <result column="request_param" jdbcType="VARCHAR" property="requestParam" />
     <result column="commit" jdbcType="VARCHAR" property="commit" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="err_msg" jdbcType="VARCHAR" property="errMsg" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, sys_name,module,class_name, method, user_id, user_account,request_param,request_ip, commit,create_time
+    id, sys_name,module,class_name, method, user_id, user_account,request_param,request_ip, commit,create_time,err_msg
   </sql>
   <select id="get" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -87,6 +88,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="errMsg != null">
+        err_msg,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sysName != null">
@@ -118,6 +122,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errMsg != null">
+        #{errMsg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

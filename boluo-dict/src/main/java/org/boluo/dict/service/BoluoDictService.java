@@ -14,5 +14,5 @@ public interface BoluoDictService extends Service<BoluoDict,Integer>{
 	
 	public BoluoDict findByDictCode(String dictCode,Integer dictId);
 	
-	public Integer qryNextVal(String seqName);
+	
 }

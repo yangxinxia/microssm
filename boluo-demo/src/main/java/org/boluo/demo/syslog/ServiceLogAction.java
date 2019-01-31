@@ -75,6 +75,7 @@ public class ServiceLogAction extends ServiceLogBase{
                     sysLogRpcService.addSysLog(sysLog);
                 }catch (Throwable e){
                 	sysLog.setCommit("发生异常！");
+                	sysLog.setErrMsg(e.getMessage());
                 	sysLogRpcService.addSysLog(sysLog);
                 }
             } else {

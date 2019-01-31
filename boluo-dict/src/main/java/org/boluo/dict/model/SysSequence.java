@@ -4,17 +4,23 @@ import java.util.Date;
 
 import com.smart.mvc.model.PersistentObject;
 
-public class BoluoDict extends PersistentObject{
+public class SysSequence extends PersistentObject{
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 795366325417356035L;
+	private static final long serialVersionUID = 6500779767624226876L;
 
 	private Integer id;
 
-    private String dictCode;
+    private String seqName;
 
-    private String dictDesc;
+    private Integer currValue;
+
+    private Integer increseValue;
+
+    private String loopFrequency;
+    
+    private String loopFrequencyDesc;
 
     private String remark;
 
@@ -34,23 +40,48 @@ public class BoluoDict extends PersistentObject{
         this.id = id;
     }
 
-    public String getDictCode() {
-        return dictCode;
+    public String getSeqName() {
+        return seqName;
     }
 
-    public void setDictCode(String dictCode) {
-        this.dictCode = dictCode == null ? null : dictCode.trim();
+    public void setSeqName(String seqName) {
+        this.seqName = seqName == null ? null : seqName.trim();
     }
 
-    public String getDictDesc() {
-        return dictDesc;
+    public Integer getCurrValue() {
+        return currValue;
     }
 
-    public void setDictDesc(String dictDesc) {
-        this.dictDesc = dictDesc == null ? null : dictDesc.trim();
+    public void setCurrValue(Integer currValue) {
+        this.currValue = currValue;
     }
 
-    public String getRemark() {
+    public Integer getIncreseValue() {
+        return increseValue;
+    }
+
+    public void setIncreseValue(Integer increseValue) {
+        this.increseValue = increseValue;
+    }
+
+    public String getLoopFrequency() {
+        return loopFrequency;
+    }
+
+    public void setLoopFrequency(String loopFrequency) {
+        this.loopFrequency = loopFrequency;
+    }
+    
+
+    public String getLoopFrequencyDesc() {
+		return loopFrequencyDesc;
+	}
+
+	public void setLoopFrequencyDesc(String loopFrequencyDesc) {
+		this.loopFrequencyDesc = loopFrequencyDesc;
+	}
+
+	public String getRemark() {
         return remark;
     }
 

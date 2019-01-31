@@ -255,19 +255,19 @@ public class Constant {
 	}
 
 	/**
-	 * 名单类型
+	 * 名单等级
 	 * @author chenjinbiao
 	 *
 	 */
 	public static class ListLevelCode {
 		/**S级名单 */
-		public final static String S = "0";
+		public final static String S = "S";
 		/**A级名单 */
-		public final static String A = "1";
+		public final static String A = "A";
 		/**B级名单*/
-		public final static String B = "2";
+		public final static String B = "B";
 		/**C级名单*/
-		public final static String C = "3";
+		public final static String C = "C";
 	}
 	/**
 	 * 名单标识
@@ -295,6 +295,49 @@ public class Constant {
 		public final static String NORMAL = "正常";
 		/** TMK标识 */
 		public final static String TAKEOUT = "已取出";
+	}
+	
+	/**
+	 * 试听状态
+	 * @author chenjinbiao
+	 */
+	public static class AuditionStatus{
+		/** 申请中 */
+		public final static String APPLICATION = "0";
+		/** 已批准 */
+		public final static String APPROVED = "1";
+		/** 已指定 */
+		public final static String DESIGNATED = "2";
+		/** 驳回 */
+		public final static String REJECT = "3";
+		/** 撤回 */
+		public final static String REVOKE = "4";
+	}
+	
+	/**
+	 * 业务字典编码 
+	 * @author chenjinbiao
+	 */
+	public static class DictCode{
+		/** 名单类型 */
+		public final static String LIST_TYPE = "list_type";
+		/** 名单等级 */
+		public final static String LIST_LEVEL = "list_level";
+		/** 名单状态 */
+		public final static String SALE_STATUS = "sale_status";
+	}
+	
+	/**
+	 * 预约名单类型
+	 * @author chenjinbiao
+	 */
+	public static class AppointListType{
+		/**意向客户*/
+		public final static String IS_INTENDED = "1";
+		/**未接通*/
+		public final static String NOT_CONNECTED = "2";
+		/**已接通待跟踪*/
+		public final static String CONNECTED = "3";
 	}
 	
 }

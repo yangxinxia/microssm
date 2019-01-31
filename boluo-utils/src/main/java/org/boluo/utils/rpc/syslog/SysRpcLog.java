@@ -30,6 +30,8 @@ public class SysRpcLog implements Serializable{
     private String commit;
 
     private Date createTime;
+    
+    private String errMsg;
 
     public Integer getId() {
         return id;
@@ -121,5 +123,15 @@ public class SysRpcLog implements Serializable{
 	public void setCommit(String commit) {
 		this.commit = commit;
 	}
+
+	public String getErrMsg() {
+		return errMsg;
+	}
+
+	public void setErrMsg(String errMsg) {
+		this.errMsg = errMsg;
+	}
+	
+	
     
 }

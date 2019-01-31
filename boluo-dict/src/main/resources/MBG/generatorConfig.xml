@@ -39,8 +39,8 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 需要生成的实体类对应的表名，多个实体类复制多份该配置即可 -->
-		<table tableName="sms_send_log" domainObjectName="SmsSendLog"
-			mapperName="SmsSendLogDao" enableCountByExample="false"
+		<table tableName="sys_sequence" domainObjectName="sysSequence"
+			mapperName="SequenceDao" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"
 			enableSelectByPrimaryKey="true">

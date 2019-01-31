@@ -1,13 +1,13 @@
 package org.boluo.demo.service.jobhandler;
 
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.stereotype.Component;
+
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
-import org.springframework.stereotype.Component;
-
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -31,7 +31,6 @@ public class DemoJobHandler extends IJobHandler {
 		XxlJobLogger.log("XXL-JOB, Hello World.");
 		
 		for (int i = 0; i < 5; i++) {
-			System.err.println("demoJobHandler="+new Date());
 			XxlJobLogger.log("beat at:" + i);
 			TimeUnit.SECONDS.sleep(2);
 		}

@@ -31,6 +31,8 @@ public class SysLog extends PersistentObject{
     private String commit;
 
     private Date createTime;
+    
+    private String errMsg;
 
     public Integer getId() {
         return id;
@@ -121,6 +123,14 @@ public class SysLog extends PersistentObject{
 
 	public void setCommit(String commit) {
 		this.commit = commit;
+	}
+
+	public String getErrMsg() {
+		return errMsg;
+	}
+
+	public void setErrMsg(String errMsg) {
+		this.errMsg = errMsg;
 	}
     
     

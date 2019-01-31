@@ -28,6 +28,7 @@ public class BoluoDictRpcServiceImpl implements BoluoDictRpcService{
 	
 	@Resource
 	private BoluoDictItemService boluoDictItemService;
+	
 
 	@Override
 	public RpcDict findBoluoDict(String dictCode) {
@@ -40,7 +41,7 @@ public class BoluoDictRpcServiceImpl implements BoluoDictRpcService{
 	}
 
 	@Override
-	public List<RpcDictItem> findBoluoDictItem(String dictCode) {
+	public List<RpcDictItem> findBoluoDictItemList(String dictCode) {
 		Dto param=Dtos.newDto();
 		param.put("dictCode", dictCode);
 		param.put("isEnabel", Constant.IsEnabel.ENABEL);
@@ -70,11 +71,6 @@ public class BoluoDictRpcServiceImpl implements BoluoDictRpcService{
 			BeanUtils.copyProperties(boluoDictItem,rpcDictItem);
 		}
 		return rpcDictItem;
-	}
-
-	@Override
-	public Integer qryNextVal(String seqName) {
-		return boluoDictService.qryNextVal(seqName);
 	}
 
 }

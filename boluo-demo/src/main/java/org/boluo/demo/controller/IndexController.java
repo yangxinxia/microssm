@@ -38,7 +38,7 @@ public class IndexController extends BaseController{
 		Integer userId=sessionUser.getUserId();
 		String sessionId=request.getSession().getId();
 		String url = XxlConfClient.get(appCode+".redirect.url", "");
-		String param="?userId="+userId+"&token="+token+"&JSESSIONID="+sessionId;
+		String param="?userId="+userId+"&token="+token+"&SESSION="+sessionId;
 		return "redirect:"+url+param;
 	}
 	
@@ -64,7 +64,7 @@ public class IndexController extends BaseController{
 	@RequestMapping(value = "/boluoDictItem", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public @ResponseBody Result  boluoDictItem(HttpServletRequest request,@RequestParam(required = true) String dictCode) {
 		Result result=this.createSuccessResult();
-		List<RpcDictItem> dictItemList=boluoDictRpcService.findBoluoDictItem(dictCode);
+		List<RpcDictItem> dictItemList=boluoDictRpcService.findBoluoDictItemList(dictCode);
 		result.setData(dictItemList);
 		return result;
 	}

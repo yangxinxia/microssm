@@ -39,6 +39,7 @@ public class AccessControlFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Headers",
 				"Origin,X-Requested-With,Content-Type,Accept,Authorization,token,__vt_param__");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
+		//response.setHeader("Set-Cookie", "name=value; Path=/;Domain=.boluo.com;Max-Age=seconds;HTTPOnly");
 		chain.doFilter(req, res);
 	}
 

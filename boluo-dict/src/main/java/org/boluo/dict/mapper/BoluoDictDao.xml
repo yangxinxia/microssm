@@ -38,7 +38,7 @@
 	
   </select>
   
-    <select id="findByDictCode"  resultMap="BaseResultMap">
+  <select id="findByDictCode"  resultMap="BaseResultMap">
   	 select 
     <include refid="Base_Column_List" />
     from boluo_dict t
@@ -132,9 +132,5 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  
-  <select id="qryNextVal"  resultType="java.lang.Integer">
-    select fnc_nextval(#{seqName,jdbcType=VARCHAR});
-  </select>
   
 </mapper>

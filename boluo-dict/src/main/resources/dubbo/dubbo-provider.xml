@@ -29,4 +29,7 @@
 	
 	<!-- 邮件服务接口 -->
 	<dubbo:service retries="0" interface="org.boluo.utils.rpc.notice.EmailRpcService" ref="emailRpcService" />
+	
+	<!-- 序列服务接口 -->
+	<dubbo:service retries="0" interface="org.boluo.utils.rpc.sequence.SequenceRpcService" ref="sequenceRpcService" />
 </beans>  

@@ -23,6 +23,16 @@
 		<dependency>
 			<groupId>com.smart</groupId>
 			<artifactId>smart-mvc</artifactId>
+		<!-- 	<exclusions>
+				<exclusion>
+					<artifactId>org.mybatis</artifactId>
+					<groupId>mybatis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.mybatis</artifactId>
+					<groupId>mybatis-spring</groupId>
+				</exclusion>
+			</exclusions> -->
 		</dependency>
 
 		<!-- sso单点登录客户端 -->
@@ -39,6 +49,12 @@
 		<dependency>
 			<groupId>boluozaixian</groupId>
 			<artifactId>boluo-utils</artifactId>
+		</dependency>
+		
+		<!-- xxl-job-core -->
+		<dependency>
+			<groupId>com.xuxueli</groupId>
+			<artifactId>xxl-job-core</artifactId>
 		</dependency>
 
 		<!-- J2EE支持 -->
@@ -96,7 +112,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
+
 		<!-- 日志桥接，Spring中commons-logging替换为logback -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

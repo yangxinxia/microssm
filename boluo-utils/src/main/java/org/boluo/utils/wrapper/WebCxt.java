@@ -34,6 +34,7 @@ public class WebCxt {
 			String key = (String) keyIterator.next();
 			String value = map.get(key)[0];
 			if("sort".equals(key)) {
+				//排序参数处理，驼峰格式转换为下划线格式
 				SortVo sortVo = JSONObject.parseObject(value, SortVo.class);
 				String property = StringUtils.camelhumpToUnderline(sortVo.getProperty());
 				sortVo.setProperty(property);

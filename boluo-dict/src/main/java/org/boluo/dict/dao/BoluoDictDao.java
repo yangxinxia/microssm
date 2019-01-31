@@ -17,6 +17,5 @@ public interface BoluoDictDao extends Dao<BoluoDict, Integer> {
 	public BoluoDict findByDictCode(@Param("dictCode") String dictCode, @Param("dictId") Integer dictId,
 			@Param("isEnabel") Integer isEnabel);
 	
-	public Integer qryNextVal(@Param("seqName") String seqName);
 
 }

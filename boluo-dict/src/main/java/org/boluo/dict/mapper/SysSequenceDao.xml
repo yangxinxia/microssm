@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.boluo.dict.dao.SysSequenceDao">
+  <resultMap id="BaseResultMap" type="org.boluo.dict.model.SysSequence">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="seq_name" jdbcType="VARCHAR" property="seqName" />
+    <result column="curr_value" jdbcType="INTEGER" property="currValue" />
+    <result column="increse_value" jdbcType="INTEGER" property="increseValue" />
+    <result column="loop_frequency" jdbcType="VARCHAR" property="loopFrequency" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_enabel" jdbcType="INTEGER" property="isEnabel" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, seq_name, curr_value, increse_value, loop_frequency, remark, is_enabel, create_time, 
+    update_time
+  </sql>
+  <select id="get" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sequence
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findBySeqName"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sequence t
+     where 1=1 
+    <if test="isEnabel != null and isEnabel != ''">
+		AND t.is_enabel = #{isEnabel}
+	</if>
+	<if test="seqName != null and seqName != ''">
+		AND t.seq_name = #{seqName}
+	</if>
+	<if test="seqId != null">
+		AND t.id <![CDATA[<> #{seqId}]]>
+	</if>
+  </select>
+  
+   <select id="findPagination"  resultMap="BaseResultMap">
+  	 select 
+    <include refid="Base_Column_List" />
+    from sys_sequence t
+    where 1=1 
+    <if test="params.seqName != null and params.seqName != ''">
+		AND t.seq_name = #{params.seqName}
+	</if>
+  </select>
+ 
+  <insert id="insert" parameterType="org.boluo.dict.model.SysSequence">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_sequence
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seqName != null">
+        seq_name,
+      </if>
+      <if test="currValue != null">
+        curr_value,
+      </if>
+      <if test="increseValue != null">
+        increse_value,
+      </if>
+      <if test="loopFrequency != null">
+        loop_frequency,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isEnabel != null">
+        is_enabel,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seqName != null">
+        #{seqName,jdbcType=VARCHAR},
+      </if>
+      <if test="currValue != null">
+        #{currValue,jdbcType=INTEGER},
+      </if>
+      <if test="increseValue != null">
+        #{increseValue,jdbcType=INTEGER},
+      </if>
+      <if test="loopFrequency != null">
+        #{loopFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabel != null">
+        #{isEnabel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="org.boluo.dict.model.SysSequence">
+    update sys_sequence
+    <set>
+      <if test="seqName != null">
+        seq_name = #{seqName,jdbcType=VARCHAR},
+      </if>
+      <if test="currValue != null">
+        curr_value = #{currValue,jdbcType=INTEGER},
+      </if>
+      <if test="increseValue != null">
+        increse_value = #{increseValue,jdbcType=INTEGER},
+      </if>
+      <if test="loopFrequency != null">
+        loop_frequency = #{loopFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabel != null">
+        is_enabel = #{isEnabel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+  <select id="qryNextVal"  resultType="java.lang.Integer">
+    select fnc_nextval(#{seqName,jdbcType=VARCHAR});
+  </select>
+</mapper>

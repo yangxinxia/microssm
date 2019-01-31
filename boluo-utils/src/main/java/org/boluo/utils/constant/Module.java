@@ -5,8 +5,8 @@ public class Module {
 	public static class Sys{
 		public final static String DICT="dict";
 		public final static String CRM="crm";
-		public final static String DEMO="DEMO";
-		public final static String MARKETING="marketing";
+		public final static String DEMO="demo";
+		public final static String MARKETING="mkt";
 	}
 	
 	public static class Dict{
@@ -14,7 +14,7 @@ public class Module {
 		public final static String DICT_ITEM="dictItem";
 	}
 	
-	public static class DEMO{
+	public static class Demo{
 		public final static String DEMO="demo";
 	}
 	
@@ -25,7 +25,7 @@ public class Module {
 		public final static String LISTMANAGE="listManage";
 	}
 	
-	public static class Marketing{
+	public static class Mkt{
 		/**
 		 * 活动
 		 */

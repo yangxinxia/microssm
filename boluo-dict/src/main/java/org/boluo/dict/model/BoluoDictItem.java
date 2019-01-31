@@ -23,6 +23,8 @@ public class BoluoDictItem extends PersistentObject {
     private String remark;
 
     private Integer isEnabel;
+    
+    private String isEnabelDesc;
 
     private Date createTime;
 
@@ -85,8 +87,18 @@ public class BoluoDictItem extends PersistentObject {
     public void setIsEnabel(Integer isEnabel) {
         this.isEnabel = isEnabel;
     }
+    
+    
 
-    public Date getCreateTime() {
+    public String getIsEnabelDesc() {
+		return isEnabelDesc;
+	}
+
+	public void setIsEnabelDesc(String isEnabelDesc) {
+		this.isEnabelDesc = isEnabelDesc;
+	}
+
+	public Date getCreateTime() {
         return createTime;
     }
 

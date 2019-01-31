@@ -29,7 +29,7 @@ public class IndexController extends BaseController{
 		Integer userId=sessionUser.getUserId();
 		String sessionId=request.getSession().getId();
 		String url = XxlConfClient.get(appCode+".redirect.url", "");
-		String param="?userId="+userId+"&token="+token+"&JSESSIONID="+sessionId;
+		String param="?userId="+userId+"&token="+token+"&SESSION="+sessionId;
 		return "redirect:"+url+param;
 	}
 	

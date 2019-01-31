@@ -12,6 +12,7 @@
 	<modules>
 		<module>boluo-dict</module>
 		<module>boluo-utils</module>
+		<module>boluo-crm</module>
 		<module>boluo-demo</module>
 	</modules>
 	
@@ -21,6 +22,18 @@
 			<id>dev</id>
 			<properties>
 				<env>dev</env>
+				<log.level>debug</log.level>
+				<log.url>${catalina.home}/logs</log.url>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- 测试环境 -->
+		<profile>
+			<id>test</id>
+			<properties>
+				<env>test</env>
 				<log.level>debug</log.level>
 				<log.url>${catalina.home}/logs</log.url>
 			</properties>
@@ -48,8 +61,9 @@
 		<spring-redis.version>1.2.2.RELEASE</spring-redis.version>
 		<aspectj.version>1.8.9</aspectj.version>
 		<jta.version>1.1</jta.version>
-		<mybatis.version>3.3.0</mybatis.version>
-		<mybatis-spring.version>1.2.3</mybatis-spring.version>
+<!-- 		<mybatis.version>3.4.6</mybatis.version>
+		<mybatis-spring.version>1.3.2</mybatis-spring.version>
+ -->		<pagehelper.version>4.1.4</pagehelper.version>
 		<druid.version>1.0.15</druid.version>
 		<mysql.version>5.1.36</mysql.version>
 		<fastjson.version>1.2.29</fastjson.version>
@@ -77,6 +91,7 @@
 		<smart.version>1.3.0</smart.version>
 		<smart-sso.version>1.3.0</smart-sso.version>
 		<xxl-conf.version>2.0</xxl-conf.version>
+		<xxl-job.version>2.0.2</xxl-job.version>
 		<boluo-utils.version>2.0</boluo-utils.version>
 		<mbg-version>1.3.5</mbg-version>
 		<httpclient.version>4.5.5</httpclient.version>
@@ -115,6 +130,13 @@
 				<groupId>com.xuxueli</groupId>
 				<artifactId>xxl-conf-core</artifactId>
 				<version>${xxl-conf.version}</version>
+			</dependency>
+			
+			<!-- xxl-job-core -->
+			<dependency>
+				<groupId>com.xuxueli</groupId>
+				<artifactId>xxl-job-core</artifactId>
+				<version>${xxl-job.version}</version>
 			</dependency>
 
 			<!-- 工具类 -->
@@ -244,18 +266,24 @@
 			</dependency>
 
 			<!-- Mybatis核心包 -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
 				<version>${mybatis.version}</version>
-			</dependency>
+			</dependency> -->
 
 			<!-- Mybatis-Spring包 -->
-			<dependency>
+		<!-- 	<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-spring</artifactId>
 				<version>${mybatis-spring.version}</version>
-			</dependency>
+			</dependency> -->
+			<!-- 分页插件 -->
+			<!-- <dependency>
+			    <groupId>com.github.pagehelper</groupId>
+			    <artifactId>pagehelper</artifactId>
+			    <version>${pagehelper.version} </version>
+			 </dependency> -->
 
 			<!-- IO操作 -->
 			<dependency>
