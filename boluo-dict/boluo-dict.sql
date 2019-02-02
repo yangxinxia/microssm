@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2019-01-31 18:52:55
+Date: 2019-02-02 19:42:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -142,17 +142,17 @@ CREATE TABLE `sys_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sys_name` varchar(50) NOT NULL,
   `module` varchar(200) NOT NULL,
-  `class_name` varchar(100) NOT NULL,
+  `class_name` varchar(200) NOT NULL,
   `method` varchar(200) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `user_account` varchar(50) DEFAULT NULL,
   `request_param` varchar(1000) DEFAULT NULL,
-  `request_ip` varchar(100) NOT NULL,
+  `request_ip` varchar(100) DEFAULT NULL,
   `commit` varchar(100) NOT NULL,
   `create_time` datetime NOT NULL,
   `err_msg` varchar(500) DEFAULT NULL COMMENT '异常信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_log
@@ -318,6 +318,46 @@ INSERT INTO `sys_log` VALUES ('158', 'dict', 'dict', 'BoluoDictItemServiceImpl',
 INSERT INTO `sys_log` VALUES ('159', 'dict', 'dict', 'BoluoDictItemServiceImpl', 'findByDictCode', '2', 'admin', 'dictCode=sys_name	isEnabel=1	', '192.168.0.130', '执行成功！', '2019-01-30 20:07:04', null);
 INSERT INTO `sys_log` VALUES ('160', 'dict', 'dict', 'BoluoDictItemServiceImpl', 'findByDictCode', '2', 'admin', 'dictCode=sys_name	isEnabel=1	', '192.168.0.130', '执行成功！', '2019-01-31 14:38:18', null);
 INSERT INTO `sys_log` VALUES ('161', 'dict', 'dict', 'BoluoDictItemServiceImpl', 'findByDictCode', '2', 'admin', 'dictCode=loop_frequency	isEnabel=1	', '192.168.0.130', '执行成功！', '2019-01-31 14:38:51', null);
+INSERT INTO `sys_log` VALUES ('162', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-01 19:25:15', null);
+INSERT INTO `sys_log` VALUES ('163', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-01 19:25:15', null);
+INSERT INTO `sys_log` VALUES ('164', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:28:28', null);
+INSERT INTO `sys_log` VALUES ('165', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:29:58', null);
+INSERT INTO `sys_log` VALUES ('166', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:29:59', null);
+INSERT INTO `sys_log` VALUES ('167', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:00', null);
+INSERT INTO `sys_log` VALUES ('168', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:01', null);
+INSERT INTO `sys_log` VALUES ('169', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:02', null);
+INSERT INTO `sys_log` VALUES ('170', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:03', null);
+INSERT INTO `sys_log` VALUES ('171', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:04', null);
+INSERT INTO `sys_log` VALUES ('172', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:04', null);
+INSERT INTO `sys_log` VALUES ('173', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:05', null);
+INSERT INTO `sys_log` VALUES ('174', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:30:58', null);
+INSERT INTO `sys_log` VALUES ('175', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:43:10', null);
+INSERT INTO `sys_log` VALUES ('176', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:47:05', null);
+INSERT INTO `sys_log` VALUES ('177', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:48:53', null);
+INSERT INTO `sys_log` VALUES ('178', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:51:50', null);
+INSERT INTO `sys_log` VALUES ('179', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:52:38', null);
+INSERT INTO `sys_log` VALUES ('180', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:52:59', null);
+INSERT INTO `sys_log` VALUES ('181', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:53:34', null);
+INSERT INTO `sys_log` VALUES ('182', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 19:54:33', null);
+INSERT INTO `sys_log` VALUES ('183', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-01 20:07:39', null);
+INSERT INTO `sys_log` VALUES ('184', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-02 13:53:27', null);
+INSERT INTO `sys_log` VALUES ('185', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', null, null, null, null, '执行成功！', '2019-02-02 13:54:15', null);
+INSERT INTO `sys_log` VALUES ('186', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '__vt_param__=44f90d27dd35423d80bdee73991c1304	', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 15:02:20', null);
+INSERT INTO `sys_log` VALUES ('187', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '__vt_param__=44f90d27dd35423d80bdee73991c1304	', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 15:02:20', null);
+INSERT INTO `sys_log` VALUES ('188', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 15:02:32', null);
+INSERT INTO `sys_log` VALUES ('189', 'dict', 'dictItem', 'BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 15:02:32', null);
+INSERT INTO `sys_log` VALUES ('190', 'dict', 'dictItem', 'org.boluo.dict.service.impl.BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 18:13:03', null);
+INSERT INTO `sys_log` VALUES ('191', 'dict', 'dictItem', 'org.boluo.dict.service.impl.BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 18:13:03', null);
+INSERT INTO `sys_log` VALUES ('192', 'dict', 'dictItem', 'org.boluo.dict.service.impl.BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 18:13:03', null);
+INSERT INTO `sys_log` VALUES ('193', 'dict', 'dictItem', 'org.boluo.dict.service.impl.BoluoDictRpcServiceImpl', 'findBoluoDictItemList', '2', 'admin', '', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 18:13:03', null);
+INSERT INTO `sys_log` VALUES ('194', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 18:45:57', null);
+INSERT INTO `sys_log` VALUES ('195', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 18:48:33', null);
+INSERT INTO `sys_log` VALUES ('196', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 18:50:32', null);
+INSERT INTO `sys_log` VALUES ('197', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 18:52:02', null);
+INSERT INTO `sys_log` VALUES ('198', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 18:57:26', null);
+INSERT INTO `sys_log` VALUES ('199', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 19:07:08', null);
+INSERT INTO `sys_log` VALUES ('200', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '发生异常！', '2019-02-02 19:11:24', 'org.boluo.utils.exception.CacheLockException');
+INSERT INTO `sys_log` VALUES ('201', 'demo', 'demo', 'org.boluo.demo.service.impl.DemoTestServiceImpl', 'testRedisLock', '2', 'admin', 'lockMethod=test	pkId=12	', '0:0:0:0:0:0:0:1', '执行成功！', '2019-02-02 19:24:52', null);
 
 -- ----------------------------
 -- Table structure for sys_sequence
