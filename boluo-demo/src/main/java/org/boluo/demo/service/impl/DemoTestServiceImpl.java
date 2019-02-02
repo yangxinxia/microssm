@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.boluo.demo.service.DemoTestService;
+import org.boluo.utils.constant.Module;
+import org.boluo.utils.lock.CacheLock;
+import org.boluo.utils.lock.LockedObject;
 import org.boluo.utils.rpc.notice.EmailRpcService;
 import org.boluo.utils.rpc.notice.SmsRpcService;
+import org.boluo.utils.rpc.syslog.Servicelog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +35,7 @@ public class DemoTestServiceImpl implements DemoTestService{
 		code.put("startDate", "2019-01-24 20:00:00");
 		smsRpcService.sendSms("13524943121", "SMS_143867530", code.toJSONString(),null,2);*/
 		
-		 List<String> toEmails=new ArrayList<String>();
+		 /*List<String> toEmails=new ArrayList<String>();
 		 toEmails.add("yangxinxia2@boluozaixian.com");
 		 toEmails.add("liushuang2@boluozaixian.com");
 		 toEmails.add("jinbiao2@boluozaixian.com");
@@ -42,8 +46,18 @@ public class DemoTestServiceImpl implements DemoTestService{
 		 copyEmails.add("chenjinbiao2@boluozaixian.com");
 		 copyEmails.add("gaodalei2@boluozaixian.com");
 		 
-		 emailRpcService.sendEmail("【test】测试邮件", toEmails, content, copyEmails);
+		 emailRpcService.sendEmail("【test】测试邮件", toEmails, content, copyEmails);*/
 		
+		
+		
+	}
+
+	@Override
+	@Servicelog(sysName=Module.Sys.DEMO,module = Module.Demo.DEMO)
+	@CacheLock(lockedPrefix="test_lock")
+	public void testRedisLock(String lockMethod,@LockedObject Integer pkId) {
+		System.out.println("lockMethod="+lockMethod);
+		System.out.println("pkId="+pkId);
 	}
 
 }

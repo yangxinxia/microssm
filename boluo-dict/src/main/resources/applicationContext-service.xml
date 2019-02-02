@@ -16,7 +16,7 @@
 
 	<context:component-scan base-package="org.boluo.dict.service.impl" />
 	
-	<!-- 扫码记录日志的类 -->
+	<!-- 扫描记录日志的类 -->
 	<context:component-scan base-package="org.boluo.dict.syslog" />
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

@@ -16,7 +16,12 @@
 
 	<context:component-scan base-package="org.boluo.demo.service.impl" />
 	
-	<!-- 扫码记录日志的类 -->
+	<!-- 扫描定时器执行的类 -->
+	<context:component-scan base-package="org.boluo.demo.service.jobhandler" />
+	
+	<!-- 扫描记录日志的类 -->
 	<context:component-scan base-package="org.boluo.demo.syslog" />
+	<!-- 扫描aop类 -->
+	<context:component-scan base-package="org.boluo.demo.aop" />
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

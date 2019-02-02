@@ -21,9 +21,5 @@ public @interface Servicelog {
 	
     String module() default "";//模块名
     
-    String className() default "";//类名
-
-    String methoed() default "";//操作方法
-    
 }
 

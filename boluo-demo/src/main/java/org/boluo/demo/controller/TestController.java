@@ -1,8 +1,6 @@
 package org.boluo.demo.controller;
 
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smart.mvc.model.Result;
-import com.smart.sso.rpc.UserRpcDto;
 import com.smart.sso.rpc.UserRpcService;
 @Controller
 public class TestController extends BaseController{
@@ -30,8 +28,9 @@ public class TestController extends BaseController{
 	@Resource
 	private RedisCache<String> redisCache;
 	
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
-	public @ResponseBody Result  logout(HttpServletRequest request,HttpServletResponse response) {
+	public @ResponseBody Result  test(HttpServletRequest request,HttpServletResponse response) {
 		Result result=this.createSuccessResult();
 		//String[] roleBusiCodes=new String[] {"sourcedirector","sourcemanage"};
 		//List<UserRpcDto> dataList=userRpcService.findUsersByRoleBusiCode(roleBusiCodes, 7,"杨",true);
@@ -48,5 +47,12 @@ public class TestController extends BaseController{
 		return result;
 	}
 	
-	
+	@RequestMapping(value = "/testLock", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public @ResponseBody Result  testLock(HttpServletRequest request,HttpServletResponse response,
+			@RequestParam(required = true) String lockMethod,
+			@RequestParam(required = true) Integer pkId) {
+		Result result=this.createSuccessResult();
+		demoTestService.testRedisLock(lockMethod, pkId);
+		return result;
+	}
 }

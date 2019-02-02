@@ -124,10 +124,10 @@ public class EmailRpcServiceImpl implements EmailRpcService{
 			Transport.send(msg);
 			
 		} catch(SendFailedException e) {
-			logger.info("【EmailSendInfo】异常="+e.getMessage());
+			logger.info("【EmailSendInfo】异常="+e.toString());
 			repeatEmail(title,toEmails,content,copyEmails,e);
 		} catch (Exception e) {
-			logger.info("【EmailSendInfo】异常="+e.getMessage());
+			logger.info("【EmailSendInfo】异常="+e.toString());
 		}
 		
 	}
@@ -142,7 +142,7 @@ public class EmailRpcServiceImpl implements EmailRpcService{
 		Address[] invalidAddr = e.getInvalidAddresses(); //得到无效效但未能成功将消息发送到的地址
 		Integer num = threadNum.get();
 		if(null==invalidAddr && num!=null){
-			logger.info("【EmailSendInfo】重发异常="+e.getMessage());
+			logger.info("【EmailSendInfo】重发异常="+e.toString());
 		}
 		threadNum.set(1);
 		//去掉无效地址的邮件

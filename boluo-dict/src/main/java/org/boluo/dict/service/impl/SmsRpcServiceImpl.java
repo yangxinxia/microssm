@@ -6,17 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.boluo.dict.model.SmsSendLog;
 import org.boluo.dict.service.SmsSendLogService;
 import org.boluo.utils.rpc.notice.SmsRpcService;
-import org.boluo.utils.wrapper.util.RequestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -29,8 +25,6 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.smart.mvc.config.ConfigUtils;
 import com.smart.mvc.util.StringUtils;
-import com.smart.sso.client.SessionUser;
-import com.smart.sso.client.SessionUtils;
 import com.xxl.conf.core.XxlConfClient;
 
 @Service("smsRpcService")
@@ -125,12 +119,12 @@ public class SmsRpcServiceImpl implements SmsRpcService {
 			smsSendLogService.save(smsSendLog);
 			
 		} catch (ClientException e) {
-			logger.error("【smsSend】ClientException异常"+e.getMessage());
-			smsSendLog.setExceptionMsg("ClientException="+e.getMessage());
+			logger.error("【smsSend】ClientException异常"+e.toString());
+			smsSendLog.setExceptionMsg("ClientException="+e.toString());
 			smsSendLogService.save(smsSendLog);
 		} catch (Exception e) {
-			logger.error("【smsSend】Exception异常"+e.getMessage());
-			smsSendLog.setExceptionMsg("Exception="+e.getMessage());
+			logger.error("【smsSend】Exception异常"+e.toString());
+			smsSendLog.setExceptionMsg("Exception="+e.toString());
 			smsSendLogService.save(smsSendLog);
 			e.printStackTrace();
 		}
@@ -172,7 +166,7 @@ public class SmsRpcServiceImpl implements SmsRpcService {
 			totalCnt=Integer.valueOf(querySendDetailsResponse.getTotalCount());
 
 		} catch (ClientException e) {
-			logger.error("【smsSendQuery】异常："+e.getMessage());
+			logger.error("【smsSendQuery】异常："+e.toString());
 			//e.printStackTrace();
 		}
 		return totalCnt;

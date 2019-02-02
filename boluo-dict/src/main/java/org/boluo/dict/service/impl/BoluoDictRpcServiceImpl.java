@@ -10,9 +10,11 @@ import org.boluo.dict.model.BoluoDictItem;
 import org.boluo.dict.service.BoluoDictItemService;
 import org.boluo.dict.service.BoluoDictService;
 import org.boluo.utils.constant.Constant;
+import org.boluo.utils.constant.Module;
 import org.boluo.utils.rpc.dict.BoluoDictRpcService;
 import org.boluo.utils.rpc.dict.RpcDict;
 import org.boluo.utils.rpc.dict.RpcDictItem;
+import org.boluo.utils.rpc.syslog.Servicelog;
 import org.boluo.utils.wrapper.Dto;
 import org.boluo.utils.wrapper.Dtos;
 import org.springframework.beans.BeanUtils;
@@ -41,6 +43,7 @@ public class BoluoDictRpcServiceImpl implements BoluoDictRpcService{
 	}
 
 	@Override
+	@Servicelog(sysName=Module.Sys.DICT,module = Module.Dict.DICT_ITEM)
 	public List<RpcDictItem> findBoluoDictItemList(String dictCode) {
 		Dto param=Dtos.newDto();
 		param.put("dictCode", dictCode);
@@ -59,6 +62,7 @@ public class BoluoDictRpcServiceImpl implements BoluoDictRpcService{
 	}
 
 	@Override
+	@Servicelog(sysName=Module.Sys.DICT,module = Module.Dict.DICT_ITEM)
 	public RpcDictItem findBoluoDictItem(String dictCode, String dictItemCode) {
 		Dto param=Dtos.newDto();
 		param.put("dictCode", dictCode);

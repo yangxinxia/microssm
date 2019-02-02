@@ -31,13 +31,14 @@ public class ServiceLogAction extends ServiceLogBase{
      * @return
      */
 	@Override
-    @Around(value = "cutService()")
+	@Around(value = "cutService()")
     public Object around(ProceedingJoinPoint point)throws Throwable{
-        Object object = null;
+		Object object = null;
         //获取拦截的方法
         Signature sig = point.getSignature();
         if(!(sig instanceof MethodSignature)){
-            throw new IllegalArgumentException("该注解只能使用在方法上！");
+            //throw new IllegalArgumentException("该注解只能使用在方法上！");
+            logger.error("【logAction】errMsg:该注解只能使用在方法上！");
         }
         MethodSignature msig = (MethodSignature) sig;
         //接下来通过拦截的方法名获取使用标注的方法
@@ -45,7 +46,7 @@ public class ServiceLogAction extends ServiceLogBase{
         try{
             method = point.getTarget().getClass().getMethod(msig.getName(),msig.getParameterTypes());
         }catch (NoSuchMethodException e){
-            logger.error(e.getMessage());
+        	logger.error("【logAction】errMsg:"+e.toString());
         }
         //如果拦截的方法不为空，说明有方法使用了SystemServicelog注解
         if (method!=null){
@@ -56,26 +57,29 @@ public class ServiceLogAction extends ServiceLogBase{
             	SysRpcLog sysLog = new SysRpcLog();
                 sysLog.setSysName(annotation.sysName());
                 sysLog.setModule(annotation.module());
-                sysLog.setClassName(annotation.className());
-                sysLog.setMethod(annotation.methoed());
-                HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-                if(request!=null) {
-               	    String requestParam=RequestUtils.getParamString(request.getParameterMap());
-                    sysLog.setRequestParam(requestParam);
-                    sysLog.setRequestIp(RequestUtils.getIpAddr(request));
-                    SessionUser sessionUser = SessionUtils.getSessionUser(request);
-                    if(sessionUser!=null) {
-                    	sysLog.setUserId(sessionUser.getUserId());
-                    	sysLog.setUserAccount(sessionUser.getAccount());
-                    }
-               }
+                sysLog.setClassName(point.getTarget().getClass().getName());
+                sysLog.setMethod(method.getName());
+                if((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()!=null) {
+                	  HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+                      if(request!=null) {
+                     	    String requestParam=RequestUtils.getParamString(request.getParameterMap());
+                          sysLog.setRequestParam(requestParam);
+                          sysLog.setRequestIp(RequestUtils.getIpAddr(request));
+                          SessionUser sessionUser = SessionUtils.getSessionUser(request);
+                          if(sessionUser!=null) {
+                          	sysLog.setUserId(sessionUser.getUserId());
+                          	sysLog.setUserAccount(sessionUser.getAccount());
+                          }
+                     }
+                }
+              
                 try {
-                    object = point.proceed();
+                	object = point.proceed();
                     sysLog.setCommit("执行成功！");
                     sysLogRpcService.addSysLog(sysLog);
                 }catch (Throwable e){
                 	sysLog.setCommit("发生异常！");
-                	sysLog.setErrMsg(e.getMessage());
+                	sysLog.setErrMsg(e.toString());
                 	sysLogRpcService.addSysLog(sysLog);
                 }
             } else {

@@ -122,6 +122,10 @@
 	<bean id="redisCache" class="org.boluo.demo.common.RedisCache">
 		<property name="redisTemplate" ref="redisTemplate" />
 	</bean>
+	<!-- redis锁 -->
+	<bean id="redisLock" class="org.boluo.demo.common.RedisLock">
+		<property name="redisCache" ref="redisCache" />
+	</bean>
 		
 
 	<!-- activeMQ : 用于权限有修改时，异步通知应用更新权限  -->
