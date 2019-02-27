@@ -17,7 +17,7 @@
 	<context:component-scan base-package="org.boluo.demo.service.impl" />
 	
 	<!-- 扫描定时器执行的类 -->
-	<context:component-scan base-package="org.boluo.demo.service.jobhandler" />
+	<context:component-scan base-package="org.boluo.demo.jobhandler" />
 	
 	<!-- 扫描记录日志的类 -->
 	<context:component-scan base-package="org.boluo.demo.syslog" />

@@ -75,6 +75,19 @@ public class BoluoDictController extends BaseController{
 		}
 		else {
 			boluoDict.setUpdateTime(new Date());
+			BoluoDict boluoDictOld=boluoDictService.get(boluoDict.getId());
+			String oldDictCode=boluoDictOld.getDictCode();
+			String newDictCode=boluoDict.getDictCode();
+			//若是修改了字典类型编码,则需要修改明细对应的类型编码
+			if(!oldDictCode.equals(newDictCode)) {
+				Dto paramDto=Dtos.newDto("dictCode",oldDictCode);
+				List<BoluoDictItem> boluoDictItemList=boluoDictItemService.findByDictCode(paramDto);
+				for(BoluoDictItem boluoDictItem:boluoDictItemList) {
+					boluoDictItem.setDictCode(newDictCode);
+					boluoDictItem.setUpdateTime(new Date());
+					boluoDictItemService.save(boluoDictItem);
+				}
+			}
 		}
 		boluoDictService.save(boluoDict);
 		return result;
