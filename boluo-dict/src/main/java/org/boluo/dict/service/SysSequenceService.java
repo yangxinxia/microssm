@@ -13,4 +13,6 @@ public interface SysSequenceService extends Service<SysSequence,Integer>{
 	public Integer qryNextVal(String seqName);
 	
 	public SysSequence findBySeqName(String seqName,Integer seqId);
+	
+	public void resetInitVal();
 }

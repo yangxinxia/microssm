@@ -15,4 +15,6 @@ public interface SysSequenceDao extends Dao<SysSequence,Integer>{
 	
 	public SysSequence findBySeqName(@Param("seqName") String seqName, @Param("seqId") Integer seqId,
 			@Param("isEnabel") Integer isEnabel);
+	
+	public int updateByLoopFrequency(@Param("loopFrequency") String loopFrequency);
 }

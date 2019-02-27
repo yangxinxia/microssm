@@ -15,7 +15,7 @@
 	       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="org.boluo.dict.service.impl" />
-	
+	<context:component-scan base-package="org.boluo.dict.jobhandler" />
 	<!-- 扫描记录日志的类 -->
 	<context:component-scan base-package="org.boluo.dict.syslog" />
 	<aop:aspectj-autoproxy proxy-target-class="true"/>

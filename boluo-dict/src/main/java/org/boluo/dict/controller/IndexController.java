@@ -4,10 +4,12 @@ package org.boluo.dict.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.boluo.dict.common.BaseController;
+import org.boluo.dict.service.SysSequenceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,8 @@ import com.xxl.conf.core.XxlConfClient;
 
 @Controller
 public class IndexController extends BaseController{
+	@Resource 
+	private SysSequenceService sysSequenceService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String  index(HttpServletRequest request,HttpServletResponse response) {
@@ -80,4 +84,10 @@ public class IndexController extends BaseController{
 				.toString();
 	}
 	
+	@RequestMapping(value = "/testJob", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public @ResponseBody Result  testJob(HttpServletRequest request){
+		Result result=this.createSuccessResult();
+		sysSequenceService.resetInitVal();
+		return result;
+	}
 }

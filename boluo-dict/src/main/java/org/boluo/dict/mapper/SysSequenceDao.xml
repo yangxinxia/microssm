@@ -48,6 +48,14 @@
 		AND t.seq_name = #{params.seqName}
 	</if>
   </select>
+  
+  <update id="updateByLoopFrequency">
+    update sys_sequence set curr_value=0,update_time=now()
+    where is_enabel=1 
+    <if test="loopFrequency != null and loopFrequency != ''">
+		AND loop_frequency=#{loopFrequency,jdbcType=VARCHAR}
+	</if>
+  </update>
  
   <insert id="insert" parameterType="org.boluo.dict.model.SysSequence">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
